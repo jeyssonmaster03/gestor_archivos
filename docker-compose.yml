@@ -1,0 +1,23 @@
+version: '3.1'
+
+services:
+  web:
+    build: .
+    container_name: servidor_php
+    ports:
+      - "8080:80"
+    volumes:
+      - ./html:/var/www/html
+      - ./uploads:/var/www/html/uploads
+
+  db:
+    image: mysql:5.7
+    container_name: base_de_datos2
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: sistema_archivos
+      MYSQL_USER: usuario
+      MYSQL_PASSWORD: clave
+    ports:
+      - "3309:3306"
